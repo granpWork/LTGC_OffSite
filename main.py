@@ -26,6 +26,10 @@ def folderStructureCreation(dirPath):
         if not path.exists(folderPath):
             os.makedirs(folderPath)
 
+    if not os.listdir(inPath):
+        print(inPath + ' is empty.', end="")
+        quit()
+
     print("Done!")
 
     pass
@@ -87,13 +91,28 @@ if __name__ == '__main__':
     today = datetime.today()
     dateTime = today.strftime("%m%d%y%H%M%S")
 
-    dirPath = r"/Users/Ran/Documents/Vaccine/LTGC_OffSite"
+    print("==============================================================")
+    print("Running Scpirt: LTGC OFFSITE Consolidation......")
+    print("==============================================================")
+
+    print('Enter source folder path:')
+    dpath = input()
+
+    dirPath = dpath
+
+    # #MAC OS Path
+    # dirPath = r"/Users/Ran/Documents/Vaccine/LTGC_OffSite"
+
+    # #WIN OS Path
+    # dirPath = "C:\Users\admin\Documents\LTGC_OffSite"
 
     inPath = os.path.join(dirPath, "in")
     outPath = os.path.join(dirPath, "out")
     logPath = os.path.join(dirPath, "log")
     backupPath = os.path.join(dirPath, "backup")
-    templateFilePath = os.path.join(dirPath, "template/VIMSTemplate.xlsx")
+    # templateFilePath = os.path.join(dirPath, "template/VIMSTemplate.xlsx")
+    templateFilePath = 'src/template/VIMSTemplate.xlsx'
+
     outFilename = 'Consolidated_LTGC_Offsite_' + dateTime
 
     # Folder Structure Creation
